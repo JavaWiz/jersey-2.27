@@ -1,0 +1,100 @@
+<!doctype html>
+<html data-ng-app="myapp">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+		
+	</style>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+  	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  	
+  	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+  
+</head>
+<!-- SET THE CONTROLLER -->
+<body data-ng-controller="mainController">
+	<div class="container">
+
+		<!-- HEADER AND TODO COUNT -->
+		<div class="jumbotron text-center">
+			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+		</div>
+
+		<!-- TODO LIST -->
+		<div id="todo-list" class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+	            <div style="max-height: 300px;overflow: auto;">
+					<table class="table table-bordered table-striped table-condensed" data-ng-show="todos.length > 0">
+					    <thead>
+					      	<tr>
+						      	<th>#</th>
+						        <th>ID</th>
+						        <th>NAME</th>
+						        <th>PROFESSION</th>
+					      	</tr>
+					    </thead>
+					    <tbody>
+					      	<tr data-ng-repeat="todo in todos">
+					      		<!-- <td><input type="checkbox" value="" data-ng-click="deleteTodo(todo.id)" class="btn-primary"></td> -->
+					      		<!-- <td><input type="checkbox" value="" data-ng-checked="checkedTodos.indexOf(todo.id) > -1" data-ng-click="toggleSelection(todo.id)">
+					      		</td> -->
+					      		<td>
+					      			<div class="checkbox">
+							          	<label>
+							            	<input type="checkbox" value="" data-ng-checked="checkedTodos.indexOf(todo.id) > -1" data-ng-click="toggleSelection(todo.id)">
+							            	<span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+							          	</label>
+							        </div>
+					      		</td>
+					        	<td>{{ todo.id }}</td>
+					        	<td>{{ todo.name }}</td>
+					        	<td>{{ todo.profession }}</td>
+				      		</tr>
+				      	</tbody>
+		      		</table>
+	      		</div>
+	      		<pre>{{checkedTodos}}</pre>
+	      		<p class="text-center" data-ng-show="loading">
+					<span class="fa fa-spinner fa-spin fa-3x"></span>
+				</p>
+      		</div>
+		</div>
+
+		<!-- FORM TO CREATE TODOS -->
+		<div id="todo-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form class="form-inline">
+					<div class="form-group">
+				      	<div class="col-xs-4">
+				        	<input class="form-control text-center" id="ex1" type="text" data-ng-model="user.id" placeholder="id">
+				      	</div>
+				      	<div class="col-xs-4">
+				        	<input class="form-control text-center" id="ex2" type="text" data-ng-model="user.name" placeholder="name">
+				      	</div>
+				      	<div class="col-xs-4">
+				       	 	<input class="form-control text-center" id="ex3" type="text" data-ng-model="user.profession" placeholder="profession">
+				      	</div>
+				    </div>
+					<!-- createToDo() WILL CREATE NEW TODOS -->
+					<button type="submit" class="btn" data-ng-click="createTodo()">Add</button>
+					<button type="submit" class="btn" data-ng-click="deleteTodos()">Delete</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

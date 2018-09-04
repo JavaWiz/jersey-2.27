@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.javawiz</groupId>
+		<artifactId>jersey-2.27</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>exception-handler</artifactId>
+	<packaging>jar</packaging>
+	<name>exception-handler</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>com.javawiz</groupId>
+			<artifactId>jersey-logging-filter</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.3</version>
+		</dependency>
+	</dependencies>
+</project>
